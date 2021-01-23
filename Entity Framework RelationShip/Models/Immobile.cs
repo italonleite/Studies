@@ -8,7 +8,7 @@ namespace Entity_Framework_RelationShip.Models
     {
         public Guid ImmobileId { get; set; }
         public EType EType { get; set; }
-        public Address AddressId { get; set; }
+        public Guid AddressId { get; set; }
         public Address Address { get; set; }
 
     }
