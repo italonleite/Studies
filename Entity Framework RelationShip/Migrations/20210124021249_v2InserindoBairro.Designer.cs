@@ -4,14 +4,16 @@ using Entity_Framework_RelationShip.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entity_Framework_RelationShip.Migrations
 {
     [DbContext(typeof(ImmobileDbContext))]
-    partial class ImmobileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210124021249_v2InserindoBairro")]
+    partial class v2InserindoBairro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
