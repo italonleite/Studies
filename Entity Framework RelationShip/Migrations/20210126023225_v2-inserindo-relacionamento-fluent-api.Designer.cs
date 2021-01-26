@@ -4,14 +4,16 @@ using Entity_Framework_RelationShip.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entity_Framework_RelationShip.Migrations
 {
     [DbContext(typeof(ImmobileDbContext))]
-    partial class ImmobileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210126023225_v2-inserindo-relacionamento-fluent-api")]
+    partial class v2inserindorelacionamentofluentapi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
