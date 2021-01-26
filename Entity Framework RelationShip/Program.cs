@@ -2,6 +2,7 @@
 using Entity_Framework_RelationShip.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 namespace Entity_Framework_RelationShip
 {
@@ -11,9 +12,10 @@ namespace Entity_Framework_RelationShip
         {
             using (var db = new ImmobileDbContext())
             {
-                var addressOne = new Address()
+
+                var address = new Address()
                 {
-                    AddressId = Guid.Parse("dba2628a-3448-4101-a8d8-21c622b29df7"),
+                    AddressId = Guid.NewGuid(),
                     City = "Pancas",
                     Neighborhood = "Vila Nova",
                     State = "ES",
@@ -21,43 +23,29 @@ namespace Entity_Framework_RelationShip
                     StreetAddress = "rua crisoberilo, 676 apt 102"
                 };
 
-                var addressTwo = new Address()
-                {
-                    AddressId = Guid.Parse("786ffc50-763b-456a-9b0f-6556c6500612"),
-                    City = "Rio de Janeiro",
-                    Neighborhood = "Jacarepagua",
-                    State = "RJ",
-                    ZipCode = "21210-250",
-                    StreetAddress = "rua almicar de castro, 150, apt303"
-                };
-
-
-                var immobileOne = new Immobile()
+                var immobile = new Immobile()
                 {
                     ImmobileId = Guid.NewGuid(),
                     EType = EType.COMERCIAL,
-                    AddressId = addressOne.AddressId,
-                    Address = addressOne
+                    AddressId = address.AddressId,
+                    Address = address
 
                 };
-                var immobileTwo = new Immobile()
-                {
-                    ImmobileId = Guid.NewGuid(),
-                    EType = EType.COMERCIAL,
-                    AddressId = addressTwo.AddressId,
-                    Address = addressTwo
 
-                };
-                db.Adresses.Add(addressOne);
-                db.Immobiles.Add(immobileOne);
-                db.Adresses.Add(addressTwo);
-                db.Immobiles.Add(immobileTwo);
+                db.Addresses.Add(address);
+                db.Immobiles.Add(immobile);
 
                 db.SaveChanges();
 
-                Console.WriteLine("ENDEREÇO");
-                foreach (var item in db.Adresses)
+                //Console.WriteLine(
+                //db.Addresses
+                //  .Where(a => a.City == "Pancas")
+                //  .ToQueryString());
+
+                Console.WriteLine("-----RESULTADO ENDEREÇOS-----");
+                foreach (var item in db.Addresses)
                 {
+
                     Console.WriteLine(
                         $"EnderecoId {item.AddressId} \n" +
                         $"ZipCode: {item.ZipCode}\n" +
@@ -66,13 +54,14 @@ namespace Entity_Framework_RelationShip
                         $"City: {item.City}\n" +
                         $"State: {item.State}\n");
                 }
-                Console.WriteLine("IMOVEL");
+                Console.WriteLine("-----RESULTADO IMÓVEIS-----");
                 foreach (var item in db.Immobiles)
                 {
                     Console.WriteLine(
                    $"ImóvelId:  {item.ImmobileId} \n" +
                    $"Tipo: {item.EType}\n" +
-                   $"EndereçoId: {item.AddressId}\n");             
+                   $"EndereçoId: {item.AddressId}\n");
+
                 }
 
             }
